@@ -60,11 +60,15 @@ impl FederationObserver {
         self.task_group.spawn_cancellable(
             format!("Observer for {}", federation.federation_id),
             async move {
-                if let Err(e) = slf
-                    .observe_federation(federation.federation_id, federation.config)
-                    .await
-                {
-                    error!("Observer errored: {e:?}");
+                loop {
+                    if let Err(e) = slf
+                        .clone()
+                        .observe_federation(federation.federation_id, federation.config.clone())
+                        .await
+                    {
+                        error!("Observer errored: {e:?}. Waiting 60s before retrying");
+                        sleep(Duration::from_secs(60)).await;
+                    }
                 }
             },
         );

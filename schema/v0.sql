@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS block_height_votes (
     session_index INTEGER NOT NULL,
     item_index INTEGER NOT NULL,
     proposer INTEGER NOT NULL,
-    height_vote INTEGER NOT NULL REFERENCES block_times(block_height),
+    height_vote INTEGER NOT NULL,
     PRIMARY KEY (federation_id, session_index, item_index),
     FOREIGN KEY (federation_id, session_index) REFERENCES sessions(federation_id, session_index)
 );
