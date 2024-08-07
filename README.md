@@ -47,5 +47,10 @@ The `block_height` and `timestamps` data has been successfully retrieved and ing
 ![Screenshot (319)](https://github.com/user-attachments/assets/b5a0e847-375e-4f83-8670-66d23fc460d0)
 
 
+## Additional Configuration for Data Retrieval
+
+To fetch and ingest additional data, we can modify the `src/federation/observer.rs` file. Specifically, you can customize the `fetch_block_times_inner` function by defining the appropriate SQL queries for each table. This allows for precise data retrieval and storage as per our requirements.
+
+
 
 
